@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  orientdb-node:
+    image: orientdb:3.2.30
+    container_name: orientdb-node
+    network_mode: "host"
+    environment:
+      - ORIENTDB_ROOT_PASSWORD=admin
+      - ORIENTDB_NODE_NAME=node_huy # Sửa thành node tên của mình
+    volumes:
+      - ./hazelcast.xml:/orientdb/config/hazelcast.xml
+      - ./default-distributed-db-config.json:/orientdb/config/default-distributed-db-config.json
+    command: /orientdb/bin/server.sh -Ddistributed=true
