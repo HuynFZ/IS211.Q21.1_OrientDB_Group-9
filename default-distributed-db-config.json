@@ -3,6 +3,7 @@
   "hotAlignment": true,
   "readQuorum": 1,
   "writeQuorum": 2,
+  "readYourWrites": true,
   "failureStrategy": "sharding",
   "servers": {
     "*": "master"
