@@ -5,7 +5,7 @@ services:
     environment:
       - ORIENTDB_ROOT_PASSWORD=admin
       - ORIENTDB_NODE_NAME=node_huy
-      - JAVA_OPTS=-Dhazelcast.local.publicAddress=26.175.219.39:5701 -Dhazelcast.socket.bind.any=true # thay bằng ip cá nhân
+      - JAVA_OPTS=-Dhazelcast.local.publicAddress=26.175.219.39:5701 -Dhazelcast.socket.bind.any=true -Dorientdb.node.address=26.175.219.39 # thay bằng port cá nhân
     ports:
       - "2424:2424"   # Cổng truyền dữ liệu giữa các máy
       - "2480:2480"   # Cổng vào Studio (Localhost)
