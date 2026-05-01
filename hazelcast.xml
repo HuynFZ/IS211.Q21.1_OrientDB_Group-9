@@ -2,7 +2,11 @@
 <hazelcast xmlns="http://www.hazelcast.com/schema/config"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://www.hazelcast.com/schema/config
-           https://www.hazelcast.com/schema/config/hazelcast-config-5.0.xsd">
+           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
+    <group>
+        <name>dev</name>
+        <password>dev-pass</password>
+    </group>
     <network>
         <port auto-increment="true" port-count="20">5701</port>
         <join>
@@ -10,9 +14,10 @@
             <tcp-ip enabled="true">
                 <member>26.241.212.73</member>
                 <member>26.53.19.165</member>
-                <member>26.175.219.39</member>
                 <member>26.209.141.220</member>
             </tcp-ip>
         </join>
     </network>
+    <!-- Đảm bảo Lite Member bị tắt -->
+    <lite-member enabled="false"/>
 </hazelcast>
