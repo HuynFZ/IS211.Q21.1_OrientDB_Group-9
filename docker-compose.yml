@@ -4,11 +4,15 @@ services:
     container_name: orientdb-node
     environment:
       - ORIENTDB_ROOT_PASSWORD=admin
-      - ORIENTDB_NODE_NAME=node_huy # Sửa thành tên node của mình (ví dụ: node_huy)
+      - ORIENTDB_NODE_NAME=node_huy
     ports:
-      - "2424:2424"
-      - "2480:2480"
+      - "2424:2424"   # Cổng truyền dữ liệu giữa các máy
+      - "2480:2480"   # Cổng vào Studio (Localhost)
+      - "5701:5701"   # Cổng quan trọng nhất để các máy "thấy" nhau
     volumes:
       - ./hazelcast.xml:/orientdb/config/hazelcast.xml
       - ./default-distributed-db-config.json:/orientdb/config/default-distributed-db-config.json
+    # Thêm dòng này để Docker trên Windows nhận diện tốt hơn
+    stdin_open: true
+    tty: true
     command: /orientdb/bin/server.sh -Ddistributed=true
