@@ -4,16 +4,16 @@ services:
     container_name: orientdb-node
     environment:
       - ORIENTDB_ROOT_PASSWORD=admin
-      - ORIENTDB_NODE_NAME=node_huy
-      - JAVA_OPTS=-Dhazelcast.local.publicAddress=26.175.219.39:5701 -Dhazelcast.socket.bind.any=true -Dorientdb.node.address=26.175.219.39 # thay bằng port cá nhân
+      - ORIENTDB_NODE_NAME=node_huy_test #Thay thành tên bản thân và chỉnh sửa address trong JAVA_OPTS phía dưới theo address bản thân
+      - JAVA_OPTS=-Dhazelcast.local.publicAddress=26.175.219.39:5701 -Dorientdb.node.address=26.175.219.39 -Dstorage.clusterSelection.strategy=local
     ports:
-      - "2424:2424"   # Cổng truyền dữ liệu giữa các máy
-      - "2480:2480"   # Cổng vào Studio (Localhost)
-      - "5701:5701"   # Cổng quan trọng nhất để các máy "thấy" nhau
+      - "2424:2424"
+      - "2480:2480"
+      - "5701:5701"
     volumes:
       - ./hazelcast.xml:/orientdb/config/hazelcast.xml
       - ./default-distributed-db-config.json:/orientdb/config/default-distributed-db-config.json
-    # Thêm dòng này để Docker trên Windows nhận diện tốt hơn
+      - ./databases:/orientdb/databases
     stdin_open: true
     tty: true
     command: /orientdb/bin/server.sh -Ddistributed=true

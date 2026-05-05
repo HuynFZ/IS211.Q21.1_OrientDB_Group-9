@@ -9,6 +9,7 @@
     </group>
     <network>
         <port auto-increment="true" port-count="20">5701</port>
+        <public-address>26.175.219.39</public-address> 
         <join>
             <multicast enabled="false"/>
             <tcp-ip enabled="true">

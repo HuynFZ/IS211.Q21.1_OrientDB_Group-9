@@ -2,18 +2,10 @@
   "autoDeploy": true,
   "hotAlignment": true,
   "readQuorum": 1,
-  "writeQuorum": 2,
-  "readYourWrites": true,
-  "failureStrategy": "sharding",
-  "servers": {
-    "*": "master"
-  },
+  "writeQuorum": "majority",
+  "servers": { "*": "master" },
   "clusters": {
-    "internal": {
-      "servers": ["<ALL>"]
-    },
-    "*": {
-      "servers": ["<ALL>"]
-    }
+    "internal": { "servers": ["<ALL>"] },
+    "*": { "servers": ["<ALL>"] }
   }
 }
