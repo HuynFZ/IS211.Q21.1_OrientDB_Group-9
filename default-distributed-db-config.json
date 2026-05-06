@@ -1,11 +1,17 @@
 {
-  "autoDeploy": true,
-  "hotAlignment": true,
-  "readQuorum": 1,
-  "writeQuorum": "majority",
-  "servers": { "*": "master" },
   "clusters": {
-    "internal": { "servers": ["<ALL>"] },
-    "*": { "servers": ["<ALL>"] }
-  }
+    "internal": {
+      "servers": ["!server1"]
+    },
+    "index": {
+      "servers": ["!server1"]
+    },
+    "*": {
+      "servers": ["<server1>", "<server2>"]
+    }
+  },
+  "readQuorum": 1,
+  "writeQuorum": 1,
+  "replication": true,
+  "autoDeploy": true
 }

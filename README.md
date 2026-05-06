@@ -1,46 +1,8 @@
 # Bài tập lớn 2 CSDL Phân tán - Nhóm 9
+Chủ đề: Triển khai Hệ quản trị NoSQL OrientDB phân tán trên Windows và thực thi truy vấn bằng Python.
 
 ## Giới thiệu
-Triển khai cụm OrientDB phân tán trên 4 Node thông qua mạng LAN ảo Radmin VPN.
-
-## 🛠 Yêu cầu hệ thống
-* **Docker & Docker Compose** đã được cài đặt.
-* **Radmin VPN**: Tất cả thành viên phải join vào cùng một Network.
-* **Hệ điều hành**: Windows/macOS/Linux.
-
-## 📁 Cấu trúc thư mục
-* `docker-compose.yml`: Cấu hình Docker container.
-* `hazelcast.xml`: Cấu hình kết nối TCP-IP giữa các Node qua IP Radmin.
-* `default-distributed-db-config.json`: Cấu hình Replication (Nhân bản) và Quorum (Đồng thuận).
-
-## 🚀 Hướng dẫn cài đặt cho thành viên
-
-### Bước 1: Cập nhật IP Radmin
-Mở file `hazelcast.xml` và đảm bảo danh sách `<tcp-ip>` chứa đúng địa chỉ IP Radmin của tất cả thành viên trong nhóm.
-
-### Bước 2: Cấu hình Node cá nhân
-Mở file `docker-compose.yml`, tìm đến dòng `ORIENTDB_NODE_NAME` và sửa thành tên định danh của bạn (ví dụ: `node_huy`).
-
-### Bước 3: Mở Port Tường lửa (Firewall) hoặc tắt tường lửa
-Đảm bảo máy tính cho phép truy cập các cổng sau:
-* `2424`: Binary connection.
-* `2480`: OrientDB Studio (HTTP).
-* `5701`: Hazelcast clustering.
-
-### Bước 4: Khởi chạy
-Mở Terminal/PowerShell tại thư mục dự án và chạy lệnh:
-```bash
-docker-compose up -d
-```
-
-### Bước 5: Kiểm tra kết nối
-Chạy lệnh sau để xem log và xác nhận Cluster đã nhận diện đủ thành viên:
-```bash
-docker logs -f orientdb-node
-```
-Nếu thấy dòng Members {size:4} là thành công.
-
-Link truy cập: http://localhost:2480/studio/index.html#/
+Dự án tập trung vào việc cài đặt Native OrientDB trên Windows, cấu hình cụm (Cluster) phân tán Multi-Master thông qua mạng LAN ảo Radmin VPN. Hệ thống hỗ trợ đồng bộ dữ liệu thời gian thực và thực thi các thao tác CRUD (Create, Read, Update, Delete) thông qua ngôn ngữ lập trình Python.
 
 ## 👨‍💻 Giảng viên hướng dẫn
 - Thầy: Nguyễn Minh Nhựt 
@@ -50,3 +12,48 @@ Link truy cập: http://localhost:2480/studio/index.html#/
 - Nguyễn Lê Bảo Ngọc - 23521030
 - Lê Vĩnh Thái - 23521417
 - Nguyễn Thành Khang - 23520698
+
+## 🛠 Yêu cầu hệ thống
+* **Hệ điều hành**: Windows (Cài đặt Native).
+* **Java**: JDK 8 hoặc mới hơn.
+* **Radmin VPN**: Các thành viên tham gia cùng một Network để có IP đầu 26.x.x.x.
+* **Python**: Phiên bản 3.x kèm thư viện pyorient.
+
+## 🚀 Hướng dẫn cài đặt Native (Ổ D)
+
+### Bước 1: Cài đặt biến môi trường
+* Download OrientDB cho Windows: https://orientdb.dev/downloads/ và giải nén OrientDB và di chuyển vào ổ D.
+* Download Java Development Kit (JDK): https://www.oracle.com/java/technologies/downloads/.
+* Vào Environment Variables trong Window, tạo biến môi trường PATH chứa đường dẫn đến file bin của JDK. 
+
+### Bước 2: Khởi chạy server
+* Sử dụng CMD tại thư mục bin của OrientDB giải nén ở trên hoặc dùng lệnh di chuyển đến 
+```bash
+cd %ORIENTDB_HOME%\bin 
+```
+* Sau đó sử dụng lệnh để khởi động
+```bash
+server.bat 
+```
+
+* Lưu ý: Lần đầu khởi chạy cần thiết lập mật khẩu cho user root (Ví dụ: admin).
+
+Link truy cập sau khi đã khởi động: http://localhost:2480/studio/index.html#/ 
+
+## Khởi động OrientDB để làm việc trên Command Line 
+* Mở OrientDB trên CMD bằng cách chạy file console.bat trong thư mục bin (đảm bảo file server.bat đã được khởi động và đang chạy) 
+* Gõ lệnh help để xem các cú pháp thao tác với OrientDB. 
+
+## Chuẩn bị môi trường Python
+```bash
+pip install pyorient
+```
+
+## Cài đặt nhân bản
+* Truy cập thư mục D:\OrientDB\orientdb-community-3.2.51\config 
+- Sao chép nội dung file default-distributed-db-config.json từ Git sang tương ứng.
+- File hazelcast.xml: chỉnh tương tự file hazelcast.xml trên Git.
+- Truy cập file: orientdb-server-config.xml: Sửa trường value trong parameter thành true, và thêm dòng <entry value = “server1” name = “server.name”>. (value chỉnh tương ứng như sau: Thái: server2, Khang: server3, Ngọc: server4)
+
+
+
