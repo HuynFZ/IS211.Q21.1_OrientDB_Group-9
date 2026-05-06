@@ -53,7 +53,7 @@ pip install pyorient
 * Truy cập thư mục D:\OrientDB\orientdb-community-3.2.51\config 
 - Sao chép nội dung file default-distributed-db-config.json từ Git sang tương ứng.
 - File hazelcast.xml: chỉnh tương tự file hazelcast.xml trên Git.
-- Truy cập file: orientdb-server-config.xml: Sửa trường value trong parameter thành true, và thêm dòng <entry value = “server1” name = “server.name”>. (value chỉnh tương ứng như sau: Thái: server2, Khang: server3, Ngọc: server4)
+- Truy cập file: orientdb-server-config.xml: Sửa trường value trong parameter thành true, và thêm dòng "entry value = “server1” name = “server.name”. (value chỉnh tương ứng như sau: Thái: server2, Khang: server3, Ngọc: server4)
 
 
 
