@@ -53,7 +53,10 @@ pip install pyorient
 * Truy cập thư mục D:\OrientDB\orientdb-community-3.2.51\config 
 - Sao chép nội dung file default-distributed-db-config.json từ Git sang tương ứng.
 - File hazelcast.xml: chỉnh tương tự file hazelcast.xml trên Git.
+
 - Truy cập file: orientdb-server-config.xml: Sửa trường value trong parameter của OHazelcastPlugin thành true, và sửa dòng "entry value = “server1” name = “server.name”. (value chỉnh tương ứng như sau: Thái: server2, Khang: server3, Ngọc: server4)
+
+- Tại file orientdb-server-config.xml: Tìm đến các thẻ listener (thường có 2 thẻ cho port 2424 và 2480). Thay đổi ip-address="0.0.0.0" thành IP Radmin của bạn: (ví dụ: ip-address="26.175.219.39")
 
 
 
