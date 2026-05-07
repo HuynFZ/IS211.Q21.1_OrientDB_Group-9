@@ -38,7 +38,7 @@ server.bat
 
 * Lưu ý: Lần đầu khởi chạy cần thiết lập mật khẩu cho user root (Ví dụ: admin).
 
-Link truy cập sau khi đã khởi động: http://localhost:2480/studio/index.html#/ 
+Link truy cập sau khi đã khởi động: http://localhost:2480/studio/index.html#/ (Thay localhost thành ip radmin máy bản thân)
 
 ## Khởi động OrientDB để làm việc trên Command Line 
 * Mở OrientDB trên CMD bằng cách chạy file console.bat trong thư mục bin (đảm bảo file server.bat đã được khởi động và đang chạy) 
