@@ -42,7 +42,7 @@ Link truy cập sau khi đã khởi động: http://localhost:2480/studio/index.
 
 ## Khởi động OrientDB để làm việc trên Command Line 
 * Mở OrientDB trên CMD bằng cách chạy file console.bat trong thư mục bin (đảm bảo file server.bat đã được khởi động và đang chạy) 
-* Gõ lệnh help để xem các cú pháp thao tác với OrientDB. 
+* Gõ lệnh help để xem các cú pháp thao tác với OrientDB.
 
 ## Chuẩn bị môi trường Python
 ```bash

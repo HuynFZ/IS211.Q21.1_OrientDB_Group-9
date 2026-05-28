@@ -1,7 +1,7 @@
 import pyorientdb
 
 # --- CẤU HÌNH KẾT NỐI ---
-HOST = '26.209.141.220' 
+HOST = '26.175.219.39' 
 PORT = 2424
 DB_NAME = 'BTL2'
 USER = 'root'
