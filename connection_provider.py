@@ -1,10 +1,10 @@
-import pyorient
+import pyorientdb as pyorient  # Đổi tên gọi thư viện pyorientdb thành pyorient để khớp với các file query
 
-# Thông tin kết nối (Thay IP bằng IP Radmin của máy giữ DB chính)
+# Tất cả code phía dưới của Huy giữ nguyên hoàn toàn:
 HOST = '26.175.219.39' 
-PORT = 2424  # Cổng Binary mặc định của OrientDB
+PORT = 2424  
 USER = 'root'
-PASS = 'admin' # Mật khẩu đặt lúc chạy server.bat lần đầu
+PASS = 'admin' 
 DB_NAME = 'BTL2'
 
 def get_client():
@@ -12,8 +12,6 @@ def get_client():
         client = pyorient.OrientDB(HOST, PORT)
         client.connect(USER, PASS)
         print(f"Kết nối thành công đến Server {HOST}")
-        
-        # Mở Database
         client.db_open(DB_NAME, USER, PASS)
         return client
     except Exception as e:
